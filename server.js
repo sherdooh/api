@@ -4,6 +4,8 @@ import express from "express";
 const app = express();
 const port = 8080;
 
+const data = [];
+
 app.use(express.json())
 
 app.get('/', (req,res) => {
@@ -13,7 +15,7 @@ app.get('/', (req,res) => {
 })
 
 app.post('/add', (req, res) => {
-    const data = []
+    
     data.push(req.body);  
 
     res.status(201).json({

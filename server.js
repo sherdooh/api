@@ -1,4 +1,9 @@
 import express from "express";
+
+import { StatusCodes } from "http-status-codes";
+
+
+
 const app = express();
 const port = 8080;
 
@@ -10,15 +15,15 @@ app.use(express.json());
 
 // GET route for the root URL
 app.get('/', (req, res) => {
-    res.send('Howdy');
+
+    res.status(StatusCodes.OK).send('Howdy');
 });
 
 // POST route to handle adding data
 app.post('/add', (req, res) => {
-    data.push(req.body);  // Add the received data to the array
-
+    data.push(req.body);
     // Send back a response confirming the data received
-    res.status(201).json({
+    res.status(StatusCodes.CREATED).json({
         message: "Data added successfully",
         data: data  // Return the updated data array
     });
